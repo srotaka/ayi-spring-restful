@@ -19,22 +19,25 @@ import java.time.LocalDate;
 
 public class PersonDTO implements Serializable {
 
-    @ApiModelProperty(position = 1, required = true, notes = "Non negative value, The first name is required.")
+    @ApiModelProperty(position = 1, required = true, notes = "Non negative value. First name is required.")
     private String firstName;
 
-    @ApiModelProperty(position = 2, required = true, notes = "Non negative value, The last name is required.")
+    @ApiModelProperty(position = 2, required = true, notes = "Non negative value. Last name is required.")
     private String lastName;
 
-    @ApiModelProperty(position = 3, required = true, notes = "Non negative value, The type document list is required.")
+    @ApiModelProperty(position = 3, required = true, notes = "Non negative value. Document type is required.")
     private String typeDocument;
 
-    @ApiModelProperty(position = 4, required = true, notes = "Non negative value, The number document is required.")
+    @ApiModelProperty(position = 4, required = true, notes = "Non negative value. Document number is required.")
     private Integer numberDocument;
 
-    @ApiModelProperty(position = 5, required = true, notes = "Non negative value, The date Created list is required.")
+    @ApiModelProperty(position = 5, required = true, notes = "Non negative value. Date of birth is required.")
+    private LocalDate dateBorn;
+
+    @ApiModelProperty(position = 6, required = true, notes = "Non negative value. Creation date is required.")
     private LocalDate dateCreated;
 
-    @ApiModelProperty(position = 6, notes = "Non negative value, The Date modified list is required.")
+    @ApiModelProperty(position = 7, notes = "Non negative value. Modification date is required.")
     private LocalDate dateModified;
 
 }
