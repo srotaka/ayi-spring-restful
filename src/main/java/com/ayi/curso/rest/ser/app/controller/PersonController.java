@@ -21,7 +21,7 @@ import java.util.List;
 public class PersonController {
     private IPersonService personService;
 
-    @PostMapping(value = "/savePerson")
+    @PostMapping(value = "/addPerson ")
     @ResponseStatus(HttpStatus.CREATED)
     @ApiOperation(
             value ="Save a person and return it.",
@@ -37,9 +37,9 @@ public class PersonController {
                             + "cannot be empty or null.")
     })
 
-    public ResponseEntity<PersonResponseDTO> savePerson(@RequestBody PersonDTO request) {
-        //PersonResponseDTO personResponseDTO = personService.savePerson(request);
-        return  new ResponseEntity<PersonResponseDTO>(personService.savePerson(request), HttpStatus.CREATED);
+    public ResponseEntity<PersonResponseDTO> addPerson (@RequestBody PersonDTO request) {
+
+        return  new ResponseEntity<PersonResponseDTO>(personService.addPerson(request), HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/getAllPersons")
@@ -87,8 +87,11 @@ public class PersonController {
     }
 
     @DeleteMapping("/{id}")
-    @ApiOperation(value = "Delete a person by id")
-    @ApiResponses(value = { @ApiResponse(code = 200, message = "Person deleted by id"),
+    @ApiOperation(
+            value = "Delete a person by id",
+            httpMethod = "DELETE")
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Person deleted by id"),
             @ApiResponse(code = 404, message = "Person not found"),
             @ApiResponse(code = 400 , message = "Bad request/Invalid field")})
     public ResponseEntity<Void> deletePerson(
@@ -96,7 +99,7 @@ public class PersonController {
             @PathVariable Long id){
         personService.delete(id);
 
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
 
