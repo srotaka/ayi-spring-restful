@@ -27,7 +27,7 @@ public class PersonServiceImpl extends Exception implements IPersonService {
     @Autowired
     private IPersonMapper personMapper;
     @Override
-    public PersonResponseDTO savePerson(PersonDTO personDTO){
+    public PersonResponseDTO addPerson(PersonDTO personDTO){
         PersonEntity personEntity = personRepository.save(personMapper.dtoToEntity(personDTO));
         return personMapper.entityToDto(personEntity);
     }
@@ -37,11 +37,6 @@ public class PersonServiceImpl extends Exception implements IPersonService {
 
         List<PersonResponseDTO> personResponseDTOs;
         List<PersonEntity> personEntities = personRepository.findAll();
-
-        /* Incorporar validaciones y excepciones */
-        /*if (listMasterEntities.size() == 0) {
-            errorResponse.throwError(HttpStatus.BAD_REQUEST, ErrorConstants.LIST_MASTER_CRITERIA_NOT_FOUND);
-        }*/
 
         personResponseDTOs = personEntities.stream()
                 .map(lt -> new PersonResponseDTO(
