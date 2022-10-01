@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @ApiModel(
         value = "PersonResponseDTO",
         description = "Represents the data needed to created Persons"
